@@ -125,7 +125,16 @@ pred.simpleEstimates<- function(x,...) UseMethod(".simpleEstimates")
   tables[[1]]<-params
   tables
 }
+
 .simpleEstimates.default<-function(model,variable,moderator,threeway=NULL,
+                                   cov_conditioning=conditioning$new(),
+                                   interval=95) {
+  
+  ginfo(paste("simple effects estimation for generic model on",paste(class(model),collapse = " ") ))
+  
+  
+}
+.simpleEstimates.default0<-function(model,variable,moderator,threeway=NULL,
            cov_conditioning=conditioning$new(),
            interval=95) {
 
