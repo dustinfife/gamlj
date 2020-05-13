@@ -490,6 +490,8 @@ options:
           title: Logistic
         - name: probit
           title: Probit
+        - name: nb
+          title: Negative Binomial
         - name: custom
           title: Custom
       default: logistic

@@ -152,11 +152,12 @@ gsimple.populate<-function(model,options,tables,cov_conditioning) {
                                    cov_conditioning=cov_conditioning,
                                    interval=interval) 
              })
+             mark(resultsTables)
+             
              if (jmvcore::isError(simple_test)) {
                  anovaTable$setNote("se.noluck",WARNS[["se.noluck"]])
                  return()
              }
-    
              anovaTableData<-resultsTables[[2]]
              anovaTable$setState(anovaTableData)
              parametersTableData<-resultsTables[[1]]  

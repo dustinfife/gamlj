@@ -131,7 +131,10 @@ pred.simpleEstimates<- function(x,...) UseMethod(".simpleEstimates")
                                    interval=95) {
   
   ginfo(paste("simple effects estimation for generic model on",paste(class(model),collapse = " ") ))
-  
+  preds<-unlist(c(moderator,threeway))
+  lnames<-c("moderator","threeway")[1:length(preds)]
+  condlist<-cov_conditioning$values(preds,decode=T)
+  mark(condlist)
   
 }
 .simpleEstimates.default0<-function(model,variable,moderator,threeway=NULL,
@@ -151,7 +154,6 @@ pred.simpleEstimates<- function(x,...) UseMethod(".simpleEstimates")
                    interval=interval)
     est<-emmeans::contrast(emm,method = .internal.emmc,by = preds,data=data,variable=variable)
     ci<-stats::confint(est,level = interval/100)
-    
     ####### rename ci variables because emmeans changes them for different models
     wci<-dim(ci)[2]
     ci<-ci[,c(wci-1,wci)]

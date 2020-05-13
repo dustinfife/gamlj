@@ -293,6 +293,7 @@ gamljGlmMixedOptions <- if (requireNamespace('jmvcore')) R6::R6Class(
                     "poisson",
                     "logistic",
                     "probit",
+                    "nb",
                     "custom"),
                 default="logistic")
             private$..custom_family <- jmvcore::OptionList$new(
@@ -1018,7 +1019,8 @@ gamljGlmMixedBase <- if (requireNamespace('jmvcore')) R6::R6Class(
                 analysisId = analysisId,
                 revision = revision,
                 pause = NULL,
-                completeWhenFilled = FALSE)
+                completeWhenFilled = FALSE,
+                requiresMissings = FALSE)
         }))
 
 #' Generalized Mixed Models

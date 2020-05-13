@@ -448,6 +448,10 @@ gamljGlmMixedClass <- R6::R6Class(
 
       if (afamily$link=="identity" & afamily$family=="gaussian")
          jmvcore::reject("The requested model is a linear mixed model, please use the Mixed Models command", code='error')
+      if (modelType=="nb") {
+        mod<-lme4::glmer.nb(form,data)
+        return(mod)
+      }
       
       ## there is a bug in LmerTest and it does not work
       ## when called within an restricted environment such as a function.
