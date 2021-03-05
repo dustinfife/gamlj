@@ -254,66 +254,49 @@ children:
     collapsed: true
     stretchFactor: 1
     children:
-      - type: VariableSupplier
-        name: plotsSupplier
-        populate: manual
-        stretchFactor: 1
-        persistentItems: false
-        events:
-          update: './gamlj.events::onUpdate_plotsSupplier'
-          change: './gamlj.events::onChange_plotsSupplier'
-        children:
-          - type: TargetLayoutBox
-            children:
-              - type: VariablesListBox
-                name: plotHAxis
-                isTarget: true
-                maxItemCount: 1
-          - type: TargetLayoutBox
-            children:
-              - type: VariablesListBox
-                name: plotSepLines
-                isTarget: true
-                maxItemCount: 1
-          - type: TargetLayoutBox
-            children:
-              - type: VariablesListBox
-                name: plotSepPlots
-                isTarget: true
-                maxItemCount: 1
       - type: LayoutBox
         margin: large
         style: inline
         children:
           - type: Label
-            label: Display
+            label: Point controls
             children:
-              - type: RadioButton
-                name: errBarDef_none
-                optionName: plotError
-                optionPart: none
-              - type: RadioButton
-                name: errBarDef_ci
-                optionName: plotError
-                optionPart: ci
-                children:
                   - type: TextBox
-                    name: ciWidth
-                    label: Interval
+                    name: alpha
+                    label: Point transparency
                     suffix: '%'
                     format: number
-                    enable: (errBarDef_ci)
-              - name: plotError_se
-                type: RadioButton
-                optionName: plotError
-                optionPart: se
+                  - type: TextBox
+                    name: jitx
+                    label: Jittering (X)
+                    suffix: '%'
+                    format: number
+                  - type: TextBox
+                    name: jity
+                    label: Jittering (Y)
+                    suffix: '%'
+                    format: number                    
           - type: Label
-            label: Plot
+            label: Aesthetics
             children:
-              - type: CheckBox
-                name: plotRaw
-              - type: CheckBox
-                name: plotDvScale
+              - name: theme
+                title: Plot theme
+                type: List
+                options:
+                  - title: Black and white
+                    name: 'bw'
+                  - title: Minimal
+                    name: 'min'
+                  - title: Classic
+                    name: 'classic'
+                  - title: Dark
+                    name: 'dark'  
+                  - title: JASP
+                    name: 'jasp'  
+          - name: ghost
+            title: Ghost Line
+            type: Bool
+            default: false
   - type: CollapseBox
     label: Simple Effects
     collapsed: true
